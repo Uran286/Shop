@@ -4,7 +4,7 @@ from apps.user.views import (
     UserRegistrationView, IndexPageView,
     CabinetView)
 
-app_name = "users"
+app_name = "user"
 
 urlpatterns = [
     path('accounts/register/', UserRegistrationView.as_view(), name="register"),
