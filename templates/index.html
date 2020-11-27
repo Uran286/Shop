@@ -17,7 +17,7 @@
         {% endif %}
 
         {% if user.is_authenticated and  user.is_staff %}
-            <a href="{% url 'users:register' %}"> Зарегистрировать пользователя</a>
+            <a href="{% url 'user:register' %}"> Зарегистрировать пользователя</a>
         {% endif %}
         <p></p>
     </div>
