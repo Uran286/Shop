@@ -30,18 +30,6 @@ class UserCreationModelForm(UserCreationForm):
             )
         return password2
 
-    # def _post_clean(self):
-    #     # super()._post_clean()
-    #     # # Validate the password after self.instance is updated with form data
-    #     # # by super().
-    #     # password = self.cleaned_data.get('password2')
-    #     # if password:
-    #     #     try:
-    #     #         password_validation.validate_password(password, self.instance)
-    #     #     except ValidationError as error:
-    #     #         self.add_error('password2', error)
-    #     pass
-
     def save(self, commit=True):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
@@ -57,5 +45,3 @@ class UserCreationModelForm(UserCreationForm):
             'email', 'password1',
             'password2',
         )
-
-        # exclude = ('username', )

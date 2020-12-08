@@ -1,6 +1,8 @@
 from django.db import models
-from apps.categories.models import Category
 from django.urls import reverse
+
+from apps.categories.models import Category
+
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)

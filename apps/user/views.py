@@ -1,7 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import (
-    CreateView, TemplateView,
-    DetailView)
+from django.views.generic import (CreateView, TemplateView, DetailView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import UserCreationModelForm

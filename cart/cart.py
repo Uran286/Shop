@@ -9,7 +9,7 @@ class Cart(object):
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
         if not cart:
-            cart = self.session[settings.CART_SESSION_ID] = {}# save an empty cart in the session
+            cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
 
     def add(self, product, quantity=1, update_quantity=False):
@@ -55,4 +55,4 @@ class Cart(object):
     def clear(self):
         del self.session[settings.CART_SESSION_ID]# удаление корзины из сессии
         self.session.modified = True
-        
+

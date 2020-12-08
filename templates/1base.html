@@ -26,20 +26,7 @@
     </div>
 </div>
 <div id="content">
-    {% block content %}
-    <div>
-        {% if user.is_authenticated %}
-            <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
-        {% else %}
-            <p>Welcome, new user. Please log in.</p>
-            <a href="{%  url 'login' %}">Login</a>
-        {% endif %}
-
-        {% if user.is_authenticated and  user.is_staff %}
-            <a href="{% url 'user:register' %}"> Зарегистрировать пользователя</a>
-        {% endif %}
-        <p></p>
-    </div>
+{% block content %}
 {% endblock %}
 </div>
 </body>

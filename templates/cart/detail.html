@@ -1,10 +1,10 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 {% load static %}
 {% block title %}
-    Your shopping cart
+    Ваша корзина пуста
 {% endblock %}
 {% block content %}
-    <h1>Your shopping cart</h1>
+    <h1>Ваша корзина</h1>
     <table class="cart">
         <thead>
         <tr>
@@ -31,8 +31,15 @@
                         </a>
                     </td>
                     <td>{{ product.name }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td><a href="{% url 'cart:cart_remove' product.id%}">Remove</a></td>
+                    <td>
+                        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                        {{ item.update_quantity_form.quantity }}
+                        {{ item.update_quantity_form.update }}
+                        <input type="submit" value="Update">
+                        {% csrf_token %}
+                        </form>
+                    </td>
+                    <td><a href="{% url 'cart:cart_remove' product.id%}">Удалить</a></td>
                     <td class="num">${{ item.price }}</td>
                     <td class="num">${{ item.total_price }}</td>
                 </tr>
@@ -46,7 +53,7 @@
         </tbody>
     </table>
     <p class="text-right">
-        <a href="{% url 'products_space:product_list' %}" class="button light">Continue shopping</a>
-        <a href="#" class="button">Checkout</a>
+        <a href="{% url 'products_space:product_list' %}" class="button light">Обратно в магазин</a>
+        <a href="{% url 'orders:order_create' %}" class="button">Оформление заказа</a>
     </p>
 {% endblock %}
